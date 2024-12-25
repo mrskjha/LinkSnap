@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, rgba(255, 0, 0, 0.7), rgba(0, 255, 0, 0.7), rgba(0, 0, 255, 0.7)); /* RGB gradient background */
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+      }
+
+      h1 {
+        color: #4caf50;
+        margin-bottom: 20px;
+      }
+
+      a {
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+      }
+
+      form {
+        margin-top: 20px;
+      }
+
+      input {
+        padding: 12px;
+        margin-top: 10px;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      input:focus {
+        outline: none;
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* 3D effect */
+        border: 1px solid #007bff;
+      }
+
+      button {
+        padding: 12px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
+        width: 100%;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>URL Shortener</h1>
+      <% if (locals.id) { %>
+        <h2>Your Shortened URL is: <a href="http://localhost:5000/<%= id %>" target="_blank">http://localhost:5000/<%= id %></a></h2>
+      <% } else { %>
+        <p>No shortened URL yet. Enter one below!</p>
+      <% } %>
+      <form action="/url" method="POST">
+        <label for="originalUrl">Enter Your Original URL:</label><br />
+        <input
+          type="text"
+          name="url"
+          id="originalUrl"
+          placeholder="https://example.com"
+          required
+        />
+        <button type="submit">Generate</button>
+      </form>
+    </div>
+  </body>
+</html>
